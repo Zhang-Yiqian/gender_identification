@@ -1,6 +1,10 @@
 clear 
 close all
 rng(2019)
+
+addpath("lib/voicebox")
+addpath("lib/SDC")
+
 global file_root
 global data_root
 file_root = '~/Documents/course files/Speech ENG/final/mycode/data/';
@@ -17,10 +21,10 @@ famale_model = get_model(strcat(file_root, training_set_file_F), num_components)
 male_model = get_model(strcat(file_root, training_set_file_M), num_components);
 
 % test model 
-res_F = GMMtester(val_set_file_M, famale_model, "val");
-res_M = GMMtester(val_set_file_M, male_model, "val");
+res_F = GMMtester(val_set_file_F, famale_model, "val");
+res_M = GMMtester(val_set_file_F, male_model, "val");
 
-A = res_M-res_F;
+A = res_F-res_M;
 sum(A>0)/length(A)
 
 
