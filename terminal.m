@@ -1,10 +1,10 @@
 function [x1, x2] = terminal(x)
 
-%·ù¶È¹éÒ»»¯µ½[-1,1]
+%ï¿½ï¿½ï¿½È¹ï¿½Ò»ï¿½ï¿½ï¿½ï¿½[-1,1]
 x = double(x);
 x = x / max(abs(x));
 
-%³£ÊýÉèÖÃ
+%ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 FrameLen = 600;
 FrameInc = 80;
 
@@ -19,53 +19,53 @@ status  = 0;
 count   = 0;
 silence = 0;
 
-%¼ÆËã¹ýÁãÂÊ
+%ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 tmp1  = enframe(x(1:end-1), FrameLen, FrameInc);
 tmp2  = enframe(x(2:end)  , FrameLen, FrameInc);
 signs = (tmp1.*tmp2)<0;
 diffs = (tmp1 -tmp2)>0.02;
 zcr   = sum(signs.*diffs, 2);
 
-%¼ÆËã¶ÌÊ±ÄÜÁ¿
+%ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
 amp = sum(abs(enframe(filter([1 -0.9375], 1, x), FrameLen, FrameInc)), 2);
 
-%µ÷ÕûÄÜÁ¿ÃÅÏÞ
+%ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 amp1 = min(amp1, max(amp)/4);
 amp2 = min(amp2, max(amp)/8);
 
-%¿ªÊ¼¶Ëµã¼ì²â
+%ï¿½ï¿½Ê¼ï¿½Ëµï¿½ï¿½ï¿½
 x1 = 0; 
 x2 = 0;
 for n=1:length(zcr)
    goto = 0;
    switch status
-   case {0,1}                   % 0 = ¾²Òô, 1 = ¿ÉÄÜ¿ªÊ¼
-      if amp(n) > amp1          % È·ÐÅ½øÈëÓïÒô¶Î
+   case {0,1}                   % 0 = ï¿½ï¿½ï¿½ï¿½, 1 = ï¿½ï¿½ï¿½Ü¿ï¿½Ê¼
+      if amp(n) > amp1          % È·ï¿½Å½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
          x1 = max(n-count-1,1);
          status  = 2;
          silence = 0;
          count   = count + 1;
-      elseif amp(n) > amp2 | ... % ¿ÉÄÜ´¦ÓÚÓïÒô¶Î
+      elseif amp(n) > amp2 | ... % ï¿½ï¿½ï¿½Ü´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
              zcr(n) > zcr2
          status = 1;
          count  = count + 1;
-      else                       % ¾²Òô×´Ì¬
+      else                       % ï¿½ï¿½ï¿½ï¿½×´Ì¬
          status  = 0;
          count   = 0;
       end
-   case 2,                       % 2 = ÓïÒô¶Î
-      if amp(n) > amp2 | ...     % ±£³ÖÔÚÓïÒô¶Î
+   case 2,                       % 2 = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      if amp(n) > amp2 | ...     % ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
          zcr(n) > zcr2
          count = count + 1;
-      else                       % ÓïÒô½«½áÊø
+      else                       % ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
          silence = silence+1;
-         if silence < maxsilence % ¾²Òô»¹²»¹»³¤£¬ÉÐÎ´½áÊø
+         if silence < maxsilence % ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½
             count  = count + 1;
-         elseif count < minlen   % ÓïÒô³¤¶ÈÌ«¶Ì£¬ÈÏÎªÊÇÔëÉù
+         elseif count < minlen   % ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì«ï¿½Ì£ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             status  = 0;
             silence = 0;
             count   = 0;
-         else                    % ÓïÒô½áÊø
+         else                    % ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             status  = 3;
          end
       end
@@ -76,25 +76,25 @@ end
 
 count = count-silence/2;
 x2 = x1 + count -1;
-subplot(311)
-plot(x)
-axis([1 length(x) -1 1])
-ylabel('Speech');
-line([x1*FrameInc x1*FrameInc], [-1 1], 'Color', 'red');
-line([x2*FrameInc x2*FrameInc], [-1 1], 'Color', 'red');
-
-subplot(312)
-plot(amp);
-axis([1 length(amp) 0 max(amp)])
-ylabel('Energy');
-line([x1 x1], [min(amp),max(amp)], 'Color', 'red');
-line([x2 x2], [min(amp),max(amp)], 'Color', 'red');
-
-subplot(313)
-plot(zcr);
-axis([1 length(zcr) 0 max(zcr)])
-ylabel('ZCR');
-line([x1 x1], [min(zcr),max(zcr)], 'Color', 'red');
-line([x2 x2], [min(zcr),max(zcr)], 'Color', 'red');
+% subplot(311)
+% plot(x)
+% axis([1 length(x) -1 1])
+% ylabel('Speech');
+% line([x1*FrameInc x1*FrameInc], [-1 1], 'Color', 'red');
+% line([x2*FrameInc x2*FrameInc], [-1 1], 'Color', 'red');
+% 
+% subplot(312)
+% plot(amp);
+% axis([1 length(amp) 0 max(amp)])
+% ylabel('Energy');
+% line([x1 x1], [min(amp),max(amp)], 'Color', 'red');
+% line([x2 x2], [min(amp),max(amp)], 'Color', 'red');
+% 
+% subplot(313)
+% plot(zcr);
+% axis([1 length(zcr) 0 max(zcr)])
+% ylabel('ZCR');
+% line([x1 x1], [min(zcr),max(zcr)], 'Color', 'red');
+% line([x2 x2], [min(zcr),max(zcr)], 'Color', 'red');
 x1 = x1 * FrameInc;
 x2 = x2 * FrameInc;
