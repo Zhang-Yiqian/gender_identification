@@ -1,4 +1,5 @@
-function r = GMMtester(audio_list, model, stage)
+function [r, pitchs] = GMMtester(audio_list, model, stage)
+% function [probs, pitchs] = extractor(audio_list, model, stage)
 
 global file_root
 file_path = strcat(file_root, audio_list); 
@@ -18,6 +19,9 @@ else
 end
 
 r = [];
+% probs = {};
+pitchs = [];
+
 for i = 1: len
   if stage == "val"
     [au, fs] = audioreader(list{1}{i}, stage);
@@ -29,10 +33,12 @@ for i = 1: len
 
   % extract SDC features
   sdc = mfcc2sdc(mfcc, 7, 1, 3, 7);
-  
   res = log(sum(pdf(model, sdc)));
-  
   r = [r; res];
+  
+  % probs = [probs, pdf(model, sdc)];
+  pitchs = [pitchs; pitch(au, 16000)];
+  end
 end
 
 end
