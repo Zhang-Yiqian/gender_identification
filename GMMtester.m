@@ -16,7 +16,7 @@ if stage == "val"
 else
   len = length(list);
 end
-  
+
 r = [];
 for i = 1: len
   if stage == "val"
