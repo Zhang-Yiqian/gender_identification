@@ -27,7 +27,7 @@ else
   au = au(s:e);
 end
 % bandpass filter the frequency of non-human voice  
-au = bandpass(au, [100, 300], 16000);
+au = highpass(au, 100, 16000);
 
 % noise cancelling
 filtered_au = v_specsub(au, fs);
