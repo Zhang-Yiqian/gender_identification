@@ -1,7 +1,7 @@
 clear 
 close all
 
-cd ~/Documents/github/gender_identification/model/fused;
+cd ~/Documents/github/gender_identification/model/100+;
 val_root = "validation/";
 model_list = dir("*.mat");
 for i = 1 : length(model_list)
@@ -28,24 +28,23 @@ for i = 1 : length(model_list)
     right_male = sum((m_mm - m_fm) > 0);
     acc_f = right_famale / length(f_fm);
     acc_m = right_male / length(m_fm);
-    disp('unfused correct famale:', num2str(right_famale), '/', num2str(acc_f),...
-      '/', length(f_fm))
-    disp('unfused correct male:', num2str(right_male), '/', num2str(acc_m),...
-      '/', length(m_fm))
-    
+    disp(strcat("unfused correct famale:", num2str(right_famale), "/", ...
+        num2str(acc_f), "/", num2str(length(f_fm))))
+    disp(strcat('unfused correct male:', num2str(right_male), '/', ...
+        num2str(acc_m), '/', num2str(length(m_fm))))
+
     % calculate accuracy of fused model
     
     S1 = feature_fusion(f_fm, f_mm, pff);
-    S2 = feature_fusion(m_fm, m_mm, pmf);
+    S2 = feature_fusion(m_mm, m_fm, pmf);
     right_famale2 = sum(S1 > 0);
     right_male2 = sum(S2 > 0);
     acc_f2 = right_famale2 / length(f_fm);
     acc_m2 = right_male2 / length(m_fm);
-    disp('fused correct famale:', num2str(right_famale2), '/', num2str(acc_f2),...
-      '/', length(f_fm))
-    disp('fused correct male:', num2str(right_male2), '/', num2str(acc_m2),...
-      '/', length(m_fm))
-
+    disp(strcat("fused correct famale:", num2str(right_famale2), "/", ...
+        num2str(acc_f2), "/", num2str(length(f_fm))))
+    disp(strcat('fused correct male:', num2str(right_male2), '/', ...
+        num2str(acc_m2), '/', num2str(length(m_fm))))
     
     disp("------------------------")
     
