@@ -18,6 +18,9 @@ for i = 1: length(list{1})
   
   % stack data
   data = [data; sdc];
+  
+  p = pitch(au, 16000, 'WindowLength', 256, 'OverlapLength', 0);
+  i=1;
 end
 
 % train the model

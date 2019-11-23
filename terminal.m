@@ -1,10 +1,9 @@
 function [x1, x2] = terminal(x)
 
-%���ȹ�һ����[-1,1]
 x = double(x);
 x = x / max(abs(x));
 
-%��������
+
 FrameLen = 600;
 FrameInc = 80;
 
@@ -19,17 +18,15 @@ status  = 0;
 count   = 0;
 silence = 0;
 
-%���������
 tmp1  = enframe(x(1:end-1), FrameLen, FrameInc);
 tmp2  = enframe(x(2:end)  , FrameLen, FrameInc);
 signs = (tmp1.*tmp2)<0;
 diffs = (tmp1 -tmp2)>0.02;
 zcr   = sum(signs.*diffs, 2);
 
-%�����ʱ����
 amp = sum(abs(enframe(filter([1 -0.9375], 1, x), FrameLen, FrameInc)), 2);
 
-%������������
+
 amp1 = min(amp1, max(amp)/4);
 amp2 = min(amp2, max(amp)/8);
 

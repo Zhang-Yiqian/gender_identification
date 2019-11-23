@@ -1,8 +1,16 @@
 clear 
 close all
 
-cd ~/Documents/github/gender_identification/model/100+;
+global data_root
+global file_root
+data_root = "~/Documents/dataset/TIMIT";
+file_root = "~/Documents/github/gender_identification/data/";
+addpath("lib/SDC")
+addpath("lib/voicebox")
+
+cd ~/Documents/github/gender_identification/model/100-300;
 val_root = "validation/";
+
 model_list = dir("*.mat");
 for i = 1 : length(model_list)
     load(model_list(i).name)
