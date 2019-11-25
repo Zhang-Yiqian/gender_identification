@@ -7,7 +7,7 @@ addpath("lib/SDC")
 
 global file_root
 global data_root
-file_root = '~/Documents/github/gender_identification/data/';
+file_root = '~/Documents/github/gender_identification/data/unbalanced/';
 data_root = '~/Documents/dataset/TIMIT';
 num_components = 4;
 
