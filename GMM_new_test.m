@@ -8,7 +8,7 @@ file_root = "~/Documents/github/gender_identification/data/";
 addpath("lib/SDC")
 addpath("lib/voicebox")
 
-cd ~/Documents/github/gender_identification/model/100-300;
+cd ~/Documents/github/gender_identification/model/100-350-unbalanced;
 val_root = "validation/";
 
 model_list = dir("*.mat");
@@ -29,6 +29,14 @@ for i = 1 : length(model_list)
     
     % calculate accuracy based on pitch
     
+%     right_famale = sum(pff > 205);
+%     right_male = sum(pmf < 205);
+%     acc_f = right_famale / length(pff);
+%     acc_m = right_male / length(pmm);
+%     disp(strcat("pitch correct famale:", num2str(right_famale), "/", ...
+%         num2str(acc_f), "/", num2str(length(pff))))
+%     disp(strcat('pitch correct male:', num2str(right_male), '/', ...
+%         num2str(acc_m), '/', num2str(length(pmm))))
     
     
     % calculate accuracy of unfused model
@@ -40,19 +48,6 @@ for i = 1 : length(model_list)
         num2str(acc_f), "/", num2str(length(f_fm))))
     disp(strcat('unfused correct male:', num2str(right_male), '/', ...
         num2str(acc_m), '/', num2str(length(m_fm))))
-
-    % calculate accuracy of fused model
-    
-    S1 = feature_fusion(f_fm, f_mm, pff);
-    S2 = feature_fusion(m_mm, m_fm, pmf);
-    right_famale2 = sum(S1 > 0);
-    right_male2 = sum(S2 > 0);
-    acc_f2 = right_famale2 / length(f_fm);
-    acc_m2 = right_male2 / length(m_fm);
-    disp(strcat("fused correct famale:", num2str(right_famale2), "/", ...
-        num2str(acc_f2), "/", num2str(length(f_fm))))
-    disp(strcat('fused correct male:', num2str(right_male2), '/', ...
-        num2str(acc_m2), '/', num2str(length(m_fm))))
     
     disp("------------------------")
     

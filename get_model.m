@@ -15,12 +15,11 @@ for i = 1: length(list{1})
 
   % extract SDC features
   sdc = mfcc2sdc(mfcc, 7, 1, 3, 7);
-  
+  % p = pitch(au, 16000, 'WindowLength', 480, 'OverlapLength', 353);
+  %  sdc = [sdc p];
   % stack data
   data = [data; sdc];
   
-  p = pitch(au, 16000, 'WindowLength', 256, 'OverlapLength', 0);
-  i=1;
 end
 
 % train the model

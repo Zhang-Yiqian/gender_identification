@@ -41,6 +41,7 @@ for i = 1: len
   r = [r; res];
   
   % probs = [probs, pdf(model, sdc)];
+  % pitchs = [pitchs; mean(pitch(au, 16000, "Method", "LHS"))];
   pitchs = [pitchs; mean(pitch(au, 16000))];
   
 end

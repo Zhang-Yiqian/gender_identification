@@ -7,7 +7,7 @@ addpath("lib/SDC")
 
 global file_root
 global data_root
-file_root = '~/Documents/github/gender_identification/data/';
+file_root = '~/Documents/github/gender_identification/data/unbalanced/';
 data_root = '~/Documents/dataset/TIMIT';
 num_components = 32;
 
@@ -42,7 +42,7 @@ val_set_file_M5 = 'crossval_5_M_TEST.txt';
 famale_model = get_model(strcat(file_root, training_set_file_F1), num_components);
 male_model = get_model(strcat(file_root, training_set_file_M1), num_components);
 save("GMM-32-1.mat", "famale_model", "male_model")
-
+disp("1")
 % train GMM model 
 famale_model = get_model(strcat(file_root, training_set_file_F2), num_components);
 male_model = get_model(strcat(file_root, training_set_file_M2), num_components);
@@ -52,6 +52,7 @@ save("GMM-32-2.mat", "famale_model", "male_model")
 famale_model = get_model(strcat(file_root, training_set_file_F3), num_components);
 male_model = get_model(strcat(file_root, training_set_file_M3), num_components);
 save("GMM-32-3.mat", "famale_model", "male_model")
+disp("2")
 
 % train GMM model 
 famale_model = get_model(strcat(file_root, training_set_file_F4), num_components);
