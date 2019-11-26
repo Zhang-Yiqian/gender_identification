@@ -1,4 +1,4 @@
-# gender_identification
+# Gender Identification Based on GMM
 
 
 Welcome to my gender identification code
@@ -6,6 +6,10 @@ Welcome to my gender identification code
 The github page is https://github.com/Zhang-Yiqian/gender_identification
 
 Check it for the newest version.
+
+## software requirement 
+
+MATLAB 2019 and above
 
 ## file strcuture 
 
