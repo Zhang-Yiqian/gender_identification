@@ -1,8 +1,9 @@
 function [x1, x2] = terminal(x)
+% detect endpoints
+% referenced from https://www.zhihu.com/question/29685010
 
 x = double(x);
 x = x / max(abs(x));
-
 
 FrameLen = 600;
 FrameInc = 80;
@@ -12,8 +13,8 @@ amp2 = 2;
 zcr1 = 10;
 zcr2 = 5;
 
-maxsilence = 500;  % 6*10ms  = 30ms
-minlen  = 15;    % 15*10ms = 150ms
+maxsilence = 500;  
+minlen  = 15;   
 status  = 0;
 count   = 0;
 silence = 0;
@@ -30,39 +31,38 @@ amp = sum(abs(enframe(filter([1 -0.9375], 1, x), FrameLen, FrameInc)), 2);
 amp1 = min(amp1, max(amp)/4);
 amp2 = min(amp2, max(amp)/8);
 
-%��ʼ�˵���
 x1 = 0; 
 x2 = 0;
 for n=1:length(zcr)
    goto = 0;
    switch status
-   case {0,1}                   % 0 = ����, 1 = ���ܿ�ʼ
-      if amp(n) > amp1          % ȷ�Ž���������
+   case {0,1}                  
+      if amp(n) > amp1          
          x1 = max(n-count-1,1);
          status  = 2;
          silence = 0;
          count   = count + 1;
-      elseif amp(n) > amp2 | ... % ���ܴ���������
+      elseif amp(n) > amp2 | ... 
              zcr(n) > zcr2
          status = 1;
          count  = count + 1;
-      else                       % ����״̬
+      else                      
          status  = 0;
          count   = 0;
       end
-   case 2,                       % 2 = ������
-      if amp(n) > amp2 | ...     % ������������
+   case 2,                       
+      if amp(n) > amp2 | ...     
          zcr(n) > zcr2
          count = count + 1;
-      else                       % ����������
+      else                       
          silence = silence+1;
-         if silence < maxsilence % ����������������δ����
+         if silence < maxsilence 
             count  = count + 1;
-         elseif count < minlen   % ��������̫�̣���Ϊ������
+         elseif count < minlen   
             status  = 0;
             silence = 0;
             count   = 0;
-         else                    % ��������
+         else                    
             status  = 3;
          end
       end
