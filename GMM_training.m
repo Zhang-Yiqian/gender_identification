@@ -4,6 +4,7 @@ rng(2019)
 
 addpath("lib/voicebox")
 addpath("lib/SDC")
+addpath("utils")
 
 global file_root
 global data_root

@@ -7,7 +7,7 @@ data_root = "~/Documents/dataset/TIMIT";
 file_root = "~/Documents/github/gender_identification/data/";
 addpath("lib/SDC")
 addpath("lib/voicebox")
-
+addpath("utils")
 cd ~/Documents/github/gender_identification/model/100-350-unbalanced;
 val_root = "validation/";
 
