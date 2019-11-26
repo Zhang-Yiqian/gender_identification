@@ -8,9 +8,9 @@ file_path = strcat(file_root, audio_list);
 fid = fopen(file_path);
 if stage == "val"
   list = textscan(fid, '%s%d%d');
-elseif tage == "test"
+elseif stage == "test"
   list = textscan(fid, '%s');
-  list = cell2mat(list);
+  list = string(list{1,1});
 end
 fclose(fid);
 
@@ -27,7 +27,7 @@ pitchs = [];
 for i = 1: len
   if stage == "val"
     [au, fs] = audioreader(list{1}{i}, stage);
-  elseif tage == "test"
+  elseif stage == "test"
     [au, fs] = audioreader(list(i), stage);
   end
   
