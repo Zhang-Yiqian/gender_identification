@@ -23,12 +23,12 @@ females = (fm - mm) > 0;
 res = strings(length(females),1);
 for i = 1: length(females)
   if females(i) == 1
-    res(i, 1) = 'F \n';
+    res(i, 1) = 'F';
   elseif females(i) == 0
-    res(i, 1) = 'M \n';
+    res(i, 1) = 'M';
   end
 end
 % write into .txt file
 fp = fopen("challenge_results.txt", "wt");
-fprintf(fp, "%s", res);
+fprintf(fp, "%s\n", res);
 fclose(fp);
