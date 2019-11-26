@@ -29,6 +29,6 @@ for i = 1: length(females)
   end
 end
 % write into .txt file
-fp = fopen("challenge_results", "wt");
+fp = fopen("challenge_results.txt", "wt");
 fprintf(fp, "%s", res);
 fclose(fp);
