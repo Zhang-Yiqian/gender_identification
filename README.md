@@ -12,12 +12,12 @@ MATLAB 2019 and above
 
 ## File Strcuture 
 
-data/: Store the train/val/test file path  
-graphs/: Some graphs in the report  
-lib/: MATLAB libraries  
-model/: All the trained model; the best performace model is named "best-model.bat"  
-res/: The validation results  
-utils/: Some self-defined functions  
+data/ : Store the train/val/test file path  
+graphs/ : Some graphs in the report  
+lib/ : MATLAB libraries  
+model/ : All the trained model; the best performace model is named "best-model.bat"  
+res/ : The validation results  
+utils/ : Some self-defined functions  
 
 ## How To Recognise Your Own Audio
 1. open "GMM_test.m"
