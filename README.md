@@ -5,22 +5,21 @@ Welcome to my gender identification code
 
 The github page is https://github.com/Zhang-Yiqian/gender_identification
 
-Check it for the newest version.
 
-## software requirement 
+## Software Requirement 
 
 MATLAB 2019 and above
 
-## file strcuture 
+## File Strcuture 
 
-data: store the train/val/test file path
-graphs: some graphs in the report
-lib: MATLAB libraries
-model: all the trained model; the best performace model is named "best-model.bat"
-res: the validation results
-utils: self-defined functions
+data: store the train/val/test file path＜/br＞
+graphs: some graphs in the report＜/br＞
+lib: MATLAB libraries＜/br＞
+model: all the trained model; the best performace model is named "best-model.bat"＜/br＞
+res: the validation results＜/br＞
+utils: some self-defined functions＜/br＞
 
-## how to test your own audio
+## How To Recognise Your Own Audio
 1. open "GMM_test.m"
 2. change to your own "file_root", which is the root of your test file list
 3. change to your own "data_root", which is the root of audio data
