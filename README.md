@@ -12,7 +12,7 @@ MATLAB 2019 and above
 
 ## File Strcuture 
 
-data: store the train/val/test file path＜/br＞
+Data: store the train/val/test file path  
 graphs: some graphs in the report＜/br＞
 lib: MATLAB libraries＜/br＞
 model: all the trained model; the best performace model is named "best-model.bat"＜/br＞
