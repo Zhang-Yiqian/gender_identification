@@ -20,12 +20,12 @@ res/ : The validation results
 utils/ : Some self-defined functions  
 
 ## How To Recognise Your Own Audio
-1. open "GMM_test.m"
-2. change to your own "file_root", which is the root of your test file list
-3. change to your own "data_root", which is the root of audio data
-4. change to your own "test_list", which is the name of test file list
-5. the results will be written in to a .txt file "challenge_results"
-6. run and enjoy the amazing performance
+1. Open "GMM_test.m"
+2. Change to your own "file_root", which is the root of your test file list
+3. Change to your own "data_root", which is the root of audio data
+4. Change to your own "test_list", which is the name of test file list
+5. The results will be written in to a .txt file "challenge_results"
+6. Run and enjoy the amazing performance
 
 
 
